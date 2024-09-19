@@ -271,13 +271,13 @@ if ($action == 'addtime' && $user->hasRight('projet', 'lire') && GETPOST('formfi
 					$tmpduration = explode(':', $amountoadd);
 					$newduration = 0;
 					if (!empty($tmpduration[0])) {
-						$newduration += ($tmpduration[0] * 3600);
+						$newduration += (int) ((float) $tmpduration[0] * 3600);
 					}
 					if (!empty($tmpduration[1])) {
-						$newduration += ($tmpduration[1] * 60);
+						$newduration += (int) ((float) $tmpduration[1] * 60);
 					}
 					if (!empty($tmpduration[2])) {
-						$newduration += ($tmpduration[2]);
+						$newduration += ((int) $tmpduration[2]);
 					}
 
 					if ($newduration > 0) {
@@ -423,7 +423,7 @@ $tasksrole = $taskstatic->getUserRolesForProjectsOrTasks(null, $usertoprocess, (
 //var_dump($taskrole);
 
 
-llxHeader("", $title, "", '', '', '', array('/core/js/timesheet.js'));
+llxHeader('', $title, '', '', 0, 0, array('/core/js/timesheet.js'), '', '', 'mod-project project-activity page-activity_permonth');
 
 //print_barre_liste($title, $page, $_SERVER["PHP_SELF"], "", $sortfield, $sortorder, "", $num, '', 'project');
 
@@ -707,8 +707,10 @@ if (count($tasksarray) > 0) {
 			print '<td class="liste_total"></td>';
 			print '<td class="liste_total"></td>';
 		}
+		$j = 0;
 		foreach ($TWeek as $weekNb) {
-			print '<td class="center hide">';
+			$j++;
+			print '<td class="center hide'.($j <= 1 ? ' borderleft' : '').'">';
 
 			$timeonothertasks = ($totalforeachweek[$weekNb] - $totalforvisibletasks[$weekNb]);
 			if ($timeonothertasks) {
@@ -733,8 +735,10 @@ if (count($tasksarray) > 0) {
 			print '<td class="liste_total"></td>';
 		}
 
+		$j = 0;
 		foreach ($TWeek as $weekNb) {
-			print '<td class="liste_total hide'.$weekNb.'" align="center"><div class="totalDay'.$weekNb.'">'.convertSecondToTime($totalforvisibletasks[$weekNb], 'allhourmin').'</div></td>';
+			$j++;
+			print '<td class="liste_total hide'.$weekNb.' center'.($j <= 1 ? ' borderleft' : '').'"><div class="totalDay'.$weekNb.'">'.convertSecondToTime($totalforvisibletasks[$weekNb], 'allhourmin').'</div></td>';
 		}
 		print '<td class="liste_total center"><div class="totalDayAll">&nbsp;</div></td>
     	</tr>';
