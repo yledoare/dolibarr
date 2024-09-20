@@ -3,10 +3,10 @@ version: "3"
 services:
     mariadb-prod:
         container_name: dolibarr-mariadb-prod
-        image: mariadb:latest
+        image: mariadb:11.2
         environment:
-            MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PWD
-            MYSQL_DATABASE: "dolibarr-prod"
+            MARIADB_ROOT_PASSWORD: $MYSQL_ROOT_PWD
+            MARIADB_DATABASE: "dolibarr-prod"
 
     web:
         container_name: dolibarr-web-prod
@@ -14,7 +14,7 @@ services:
 
         volumes:
          - ../../htdocs:/var/www/html/
-         - ../../documents:/var/www/html/documents
+         - ../../documents:/var/www/documents
 
         depends_on:
             - mariadb-prod

@@ -9,11 +9,11 @@ chgrp -hR www-data /var/www/html
 chmod g+rwx /var/www/html/conf
 
 if [ ! -d /var/documents ]; then
-	echo "[docker-run] => create volume directory /var/documents ..."
-	mkdir -p /var/documents
+	echo "[docker-run] => create volume directory /var/www/documents ..."
+	mkdir -p /var/www/documents
 fi
-echo "[docker-run] => Set Permission to www-data for /var/documents"
-chown -R www-data:www-data /var/documents
+echo "[docker-run] => Set Permission to www-data for /var/www/documents"
+chown -R www-data:www-data /var/www/documents
 
 echo "[docker-run] => update '${PHP_INI_DIR}/conf.d/dolibarr-php.ini'"
 cat <<EOF > "${PHP_INI_DIR}/conf.d/dolibarr-php.ini"
