@@ -7,6 +7,7 @@
 -- Copyright (C) 2007      Patrick Raguin       <patrick.raguin@gmail.com>
 -- Copyright (C) 2011-2017 Alexandre Spangaro   <aspangaro@open-dsi.fr>
 -- Copyright (C) 2023      Udo Tamm             <dev@dolibit.de>
+-- Copyright (C) 2025      Yann Le Doaré        <asso@adn-bzh.org>
 --
 -- This program is free software; you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -43,6 +44,7 @@
 -- PCG14-DEV     -  510
 -- PCG18-ASSOC   - 1490 
 -- PCGAFR14-DEV  - 1620
+-- PCG20-ASSOC   - ?
 
 
 --
@@ -2738,3 +2740,25 @@ INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, acc
 INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 9118,'PCGAFR14-DEV','INCOME',   '791','9117', 'Transferts de charges d''exploitation', 1);
 INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 9119,'PCGAFR14-DEV','INCOME',   '796','9117', 'Transferts de charges financières', 1);
 INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 9120,'PCGAFR14-DEV','INCOME',   '797','9117', 'Transferts de charges exceptionnelles', 1);
+
+--
+-- Descriptif des plans comptables FR PCG20-ASSOC
+--
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10001,'PCG20-ASSOC','CAPIT',		'1',    '0', 'Fonds propres, emprunts et dettes assimilésFonds propres, provisions pour risques et charges et dettes à plus d''un an', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10002,'PCG20-ASSOC','IMMO',		'2',    '0', 'Frais d''établissement. Actifs immobilisés et créances à plus d''un an', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10003,'PCG20-ASSOC','STOCK',		'3',    '0', 'Stock et commandes en cours d''exécution', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10004,'PCG20-ASSOC','THIRDPARTY','4',  '0', 'Créances et dettes à un an au plus', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10005,'PCG20-ASSOC','FINAN',		'5',    '0', 'Placement de trésorerie et de valeurs disponibles', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10006,'PCG20-ASSOC','EXPENSE',	'6',    '0', 'Charges', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10007,'PCG20-ASSOC','INCOME',	'7',    '0', 'Produits', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 10008,'PCG20-ASSOC','SPECIAL',	'8',    '0', 'Comptes spéciaux', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100040,'PCG20-ASSOC','THIRDPARTY', '40', '10004', 'Fournisseurs et comptes rattachés', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100041,'PCG20-ASSOC','THIRDPARTY', '41', '10004', 'Clients, usagers et comptes rattachés', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100042,'PCG20-ASSOC','THIRDPARTY', '42', '10004', 'Personnel et compte rattachés', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100060,'PCG20-ASSOC','EXPENSE'	'60',    '0', 'Achats', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100061,'PCG20-ASSOC','EXPENSE'	'61',    '0', 'Services extérieurs', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100063,'PCG20-ASSOC','EXPENSE'	'63',    '0', 'Impôts, taxes et versements assimilés', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100064,'PCG20-ASSOC','EXPENSE'	'64',    '0', 'Charges de personnel', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100070,'PCG20-ASSOC','INCOME',	'70',    '0', 'Ventes de produits fabriqués, de prestations de services, et de marchandises', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100071,'PCG20-ASSOC','INCOME',	'71',    '0', 'Production stockée', 1);
+INSERT INTO llx_accounting_account (entity, rowid, fk_pcg_version, pcg_type, account_number, account_parent, label, active) VALUES (__ENTITY__, 100072,'PCG20-ASSOC','INCOME',	'72',    '0', 'Production immobilisée', 1);
